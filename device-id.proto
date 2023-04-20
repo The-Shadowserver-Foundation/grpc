@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package shadowserver.grpc;
+
+option java_multiple_files = true;
+option java_outer_classname = "DeviceIdProto";
+option java_package = "org.shadowserver.grpc";
+
+// The DeviceId gRPC service provides device identification details for a given IP address.
+service DeviceId {
+    // Perform a lookup
+    rpc Lookup(Request) returns (Device) {}
+    // Perform bulk lookups
+    rpc Chat(stream Request) returns (stream Device) {}
+}
+
+// The request message containing an IP address.
+//   IPv4: dotted decimal notation ("192.168.1.1")
+//   IPv6: compressed notation as defined in RFC 5952 ("2001:db::1")
+message Request {
+  string ip = 1;
+}
+
+// The response message containing the device details.
+message Device {
+  string ip = 1;
+  optional string device_type = 2;
+  optional string device_model = 3;
+  optional string device_vendor = 4;
+  optional string device_sector = 5;
+}
