@@ -2,8 +2,6 @@ The DeviceId gRPC service provides device identification details for a given IP 
 
 This module requires membership in the 'deviceid' API access group.
 
-The protocol file for this service can be found in the protos folder of the Code section as `device_id.proto`.
-
 Here is a sample client written in Python:
 
 ```
